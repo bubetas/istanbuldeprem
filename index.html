@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Son Depremler - EMSC</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #00796B;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #00796B;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #004D40;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 800px;
+      margin: auto;
+    }
+    li {
+      background: #ffffff;
+      margin: 10px 0;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    li:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    }
+    a {
+      text-decoration: none;
+      color: #0288D1;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .date {
+      display: block;
+      color: #555;
+      margin-top: 8px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Son Depremler</h1>
+  <button onclick="verileriYenile()">Verileri Yenile</button>
+</header>
+
+<ul id="depremListesi">
+  <!-- Deprem verileri buraya gelecek -->
+</ul>
+
+<script>
+const depremler = [
+  { baslik: "M 5.1 - Türkiye - Elazığ", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234567", tarih: "26 Nisan 2025 - 14:32" },
+  { baslik: "M 4.7 - Türkiye - Malatya", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234568", tarih: "26 Nisan 2025 - 13:20" },
+  { baslik: "M 3.8 - Türkiye - Adana", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234569", tarih: "26 Nisan 2025 - 12:45" },
+  { baslik: "M 4.5 - Türkiye - İzmir", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234570", tarih: "26 Nisan 2025 - 11:30" },
+  { baslik: "M 3.6 - Türkiye - Denizli", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234571", tarih: "26 Nisan 2025 - 10:15" },
+  { baslik: "M 4.9 - Türkiye - Antalya", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234572", tarih: "26 Nisan 2025 - 09:05" },
+  { baslik: "M 3.5 - Türkiye - Mersin", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234573", tarih: "26 Nisan 2025 - 08:45" },
+  { baslik: "M 4.2 - Türkiye - Ankara", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234574", tarih: "26 Nisan 2025 - 08:20" },
+  { baslik: "M 3.9 - Türkiye - Bursa", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234575", tarih: "26 Nisan 2025 - 07:50" },
+  { baslik: "M 5.0 - Türkiye - Van", link: "https://www.emsc-csem.org/Earthquake/earthquake.php?id=1234576", tarih: "26 Nisan 2025 - 07:15" }
+];
+
+function listeyiGoster() {
+  const liste = document.getElementById('depremListesi');
+  liste.innerHTML = ""; // Önce temizle
+  depremler.forEach(deprem => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${deprem.link}" target="_blank">${deprem.baslik}</a><span class="date">${deprem.tarih}</span>`;
+    liste.appendChild(li);
+  });
+}
+
+function verileriYenile() {
+  listeyiGoster();
+}
+
+window.onload = listeyiGoster;
+</script>
+
+</body>
+</html>
